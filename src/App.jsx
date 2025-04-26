@@ -15,11 +15,14 @@ function App() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:8080/api/url/save", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ value }),
-      });
+      const res = await fetch(
+        "https://url-shortner-backend-ssdt.onrender.com/api/url/save",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ value }),
+        }
+      );
 
       const data = await res.text();
       setShortUrl(data);
