@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 function App() {
   const [value, setValue] = useState("");
@@ -55,7 +56,13 @@ function App() {
         </button>
 
         {shortUrl && (
-          <p className="text-green-600 font-semibold mb-4 break-all">
+          <p
+            className="text-green-600 font-semibold mb-4 break-all cursor-pointer"
+            onClick={() => {
+              navigator.clipboard.writeText(shortUrl);
+              toast.success("Link copied to clipboard!");
+            }}
+          >
             Shortened URL: {shortUrl}
           </p>
         )}
